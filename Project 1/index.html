@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Taza Khabar - Live News</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">The Taza Khabar 📰</div>
+    <nav>
+      <ul id="navbarMenu" class="navbar-menu">
+        <li class="dropdown categories-dropdown">
+          <button class="dropbtn" aria-haspopup="true" aria-expanded="false" aria-controls="categoryMenu" id="categoryToggle">
+            Categories ▼
+          </button>
+          <ul id="categoryMenu" class="dropdown-content" role="menu" aria-label="News categories" hidden>
+            <li role="menuitem" data-category="general" class="active">Top Headlines</li>
+            <li role="menuitem" data-category="technology">Technology</li>
+            <li role="menuitem" data-category="sports">Sports</li>
+            <li role="menuitem" data-category="entertainment">Entertainment</li>
+            <li role="menuitem" data-category="health">Health</li>
+          </ul>
+        </li>
+
+        <li id="trendingBtn" class="nav-item" role="menuitem" tabindex="0">Trending</li>
+        <li id="articlesBtn" class="nav-item" role="menuitem" tabindex="0">Articles</li>
+        <li id="blogsBtn" class="nav-item" role="menuitem" tabindex="0">Blogs</li>
+        <li id="membershipBtn" class="nav-item membership-nav-item" role="menuitem" tabindex="0"></li>
+      </ul>
+    </nav>
+
+    <div class="actions">
+      <!-- Dark mode toggle on the left -->
+      <button id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+
+      <!-- Search input in the middle -->
+      <input class="search" type="text" id="searchInput" placeholder="Search news..." aria-label="Search news" />
+
+     <!-- Profile dropdown (only one profile icon now) -->
+      <div class="profile-dropdown">
+        <button id="profileBtn" class="profile-btn" aria-label="Profile menu" aria-haspopup="true" aria-expanded="false">
+          <!-- <img src="https://via.placeholder.com/32" alt="Profile Icon" class="profile-icon" /> -->
+        </button>
+        <ul id="profileMenu" class="profile-menu" role="menu" aria-label="Profile options" hidden>
+          <li role="menuitem"><a href="#">My Profile</a></li>
+          <li role="menuitem"><a href="#">Settings</a></li>
+          <li role="menuitem"><a href="#">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div id="news" class="news-grid" aria-live="polite" aria-busy="false"></div>
+    <div id="loading" class="loading-spinner" role="status" aria-label="Loading" aria-hidden="true"></div>
+    <div id="error" class="error-message" role="alert"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

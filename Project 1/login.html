@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f4f4;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 1000px 1000px 1000px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      transition: box-shadow 0.7s ease-in;
+    }
+
+    form:hover {
+      box-shadow: 8px 10px 15px #df05f3, 0 0 10px 10px #2092ef;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    h4 {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    #email {
+      border-radius: 15px;
+    }
+
+    #password {
+      border-radius: 15px;
+    }
+
+    button {
+      border-radius: 15px;
+    }
+
+    a {
+      color: black;
+    }
+
+    h4,
+    h2 {
+      animation: colorChange 5s infinite alternate;
+    }
+    
+    @keyframes colorChange {
+      25% {
+        color: #2092ef;
+      }
+      100% {
+        color: #df05f3;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <form id="loginForm">
+    <h2>Taaza Khabar</h2>
+    <h4>Get the latest news at your fingertips</h4>
+    <input type="email" id="email" placeholder="Enter Email" required>
+    <input type="password" id="password" placeholder="Enter Password" required>
+    <button type="submit">Login</button>
+    <a href="signup.html">Don't have an account? Signup</a>
+  </form>
+
+  <script>
+    const backendURL = "http://localhost:5000";
+
+    document.getElementById("loginForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const response = await fetch(`${backendURL}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await response.json();
+
+      if (data.message === "Login successful!") {
+        localStorage.setItem("username", data.username);
+        window.location.href = "index.html";
+      } else {
+        alert(data.message);
+      }
+    });
+  </script>
+
+</body>
+
+</html>
